@@ -24,7 +24,7 @@ const Register = () => {
         const password = form.get('password');
         const photoUrl = form.get('photoUrl');
         setPasswordError('');
-        // console.log(name,photoUrl);
+         console.log(name,photoUrl);
 
         // Regular expressions for special character and numeric character
         const hasSpecialChar = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/.test(password);
