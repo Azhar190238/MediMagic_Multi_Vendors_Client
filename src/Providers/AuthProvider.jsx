@@ -1,95 +1,92 @@
-
-/* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
-import { GoogleAuthProvider, GithubAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
-import { auth } from "../firebase/Firebase.config";
-// import axios from "axios";
-// eslint-disable-next-line react-refresh/only-export-components
-export const authContext = createContext(null)
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { app } from "../firebase/firebase.config";
+import UseAxiosPublic from "../Hooks/UseAxiosPublic";
+// import { GoogleAuthProvider } from "firebase/auth/cordova";
 
-const AuthProvider = ({ children }) => {
+export const AuthContext =createContext(null);
+const auth = getAuth(app);
 
-    const [user, setUser] = useState(null)
-    const [loading, setLoading] = useState(true)
+const AuthProvider = ({children}) => {
+    const [user, setUser] =useState(null);
+    const [loading ,setLoading] =useState(true);
 
-    const provider = new GoogleAuthProvider();
-    const gProvider = new GithubAuthProvider();
-
-    const createUser = (email, password) => {
-        setLoading(true)
-        return createUserWithEmailAndPassword(auth, email, password)
+    // const googleProvider = new GoogleAuthProvider();
+    const googleProvider = new GoogleAuthProvider();
+    const axiosPublic = UseAxiosPublic();
+    const createUser = (email, password) =>{
+        setLoading(true);
+        return createUserWithEmailAndPassword(auth, email,password)
+    }
+    const signIn = (email, password) =>{
+     setLoading(true);
+     return signInWithEmailAndPassword( auth, email,password)
     }
 
-    const signIn = (email, password) => {
-        setLoading(true)
-        return signInWithEmailAndPassword(auth, email, password)
+    const googleSignIn = () =>{
+        setLoading(true);
+        return signInWithPopup(auth, googleProvider);
+
     }
 
-    const logOut = () => {
-        setLoading(true)
-        return signOut(auth)
+    const logOut =() =>{
+        setLoading(true);
+        return signOut(auth);
     }
-
-    const googleSignIn = () => {
-        setLoading(true)
-        return signInWithPopup(auth, provider)
-    }
-
-    const gitHubSignIn = () => {
-        setLoading(true)
-        return signInWithPopup(auth,gProvider)
-    }
-
-    useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            const userEmail = currentUser?.email || user?.email;
-            const loggedUser = { email: userEmail }
-            // console.log('current User', currentUser)
-            setUser(currentUser)
-            setLoading(false)
-
-    //         if (currentUser) {
-
-    //             axios.post('https://assignment-11-server-side-eta.vercel.app/jwt', loggedUser, {
-    //                 withCredentials: true
-    //             })
-    //                 .then(res => {
-    //                     console.log('token response', res.data)
-    //                         // if(res.data.success){
-    //                         //   navigate(location?.state ? location?.state : '/')
-    //                         // }
-    //                 })
-    //         }
-    //         else {
-    //             axios.post('https://assignment-11-server-side-eta.vercel.app/logout', loggedUser, {
-    //                 withCredentials: true
-    //             })
-    //                 .then(res => {
-    //                     console.log('token response', res.data)
-    //                 })
-    //         }
+    const updatedUserProfile =(name, photo) =>{
+      return  updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photo 
         });
-        return () => {
-            unSubscribe();
-        }
-    }, [user?.email])
-   console.log( "USER DETAILS:", user);
-    const authInfo = {
+       
+    }
+    useEffect(() =>{
+       const unSubscriber = onAuthStateChanged( auth ,currentUser =>{
+        setUser(currentUser);
+         if(currentUser){
+            // get token and store client
+            const userInfo = { email: currentUser.email}
+            axiosPublic.post('/jwt', userInfo )
+            .then(res => {
+                if (res.data.token){
+
+                    localStorage.setItem('access-token', res.data.token);
+                    setLoading(false);
+                }
+            })
+         }
+         else{
+            //Remove token whi=en token stored in the client
+            localStorage.removeItem('access-token')
+            setLoading(false);
+         }
+
+       } )
+       return ()=>{
+        return unSubscriber();
+       }
+    },[axiosPublic])
+    const authInfo ={
         user,
+        loading,
         createUser,
         signIn,
-        logOut,
         googleSignIn,
-        gitHubSignIn,
-        loading
+        logOut,
+        updatedUserProfile
     }
     return (
-        <authContext.Provider value={authInfo}>
-            {
-                children
-            }
-        </authContext.Provider>
+        <AuthContext.Provider value={authInfo}>
+            {children}
+        </AuthContext.Provider>
     );
 };
 
 export default AuthProvider;
+
+
+
+
+
+
+
+
