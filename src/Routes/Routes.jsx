@@ -23,12 +23,14 @@ import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 import SellerHome from "../Pages/Dashboard/SellerHome/SellerHome";
 import AddMedicine from "../Pages/Dashboard/Seller/AddMedicine/AddMedicine";
+import ErrorPage from "../Components/SocialLogIn/ErrorPage/ErrorPage";
 
   
  export const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement: <ErrorPage></ErrorPage>,
       children:[
         {
           path: '/',
