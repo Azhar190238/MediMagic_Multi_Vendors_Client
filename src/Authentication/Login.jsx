@@ -4,11 +4,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import Swal from "sweetalert2";
 import { authContext } from "../Providers/AuthProvider";
-import UseTitle from "../Components/Title/UseTitle";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
-    // Set the title of the page
-    UseTitle("Login");
+  
 
     // Initialize necessary hooks and context
     const area = useLocation();
@@ -35,7 +34,7 @@ const Login = () => {
                 timer: 1500
             });
         } catch (error) {
-         
+
             Swal.fire({
                 icon: 'error',
                 title: 'Login failed',
@@ -93,6 +92,11 @@ const Login = () => {
     // JSX for the login form
     return (
         <div>
+            <div>
+                <Helmet>
+                    <title> MediMagic | Login</title>
+                </Helmet>
+            </div>
             <div className="hero min-h-screen bg-base-200">
 
 

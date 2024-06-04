@@ -4,16 +4,15 @@ import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { authContext } from "../Providers/AuthProvider";
-import UseTitle from "../Components/Title/UseTitle";
+import { Helmet } from "react-helmet-async";
 
 
 const Register = () => {
-    UseTitle("Register");
-    
+
     const navigate = useNavigate();
     const { createUser } = useContext(authContext);
     const [passwordError, setPasswordError] = useState(null);
-    const [showPassword,setShowPassword]=useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -24,12 +23,12 @@ const Register = () => {
         const password = form.get('password');
         const photoUrl = form.get('photoUrl');
         setPasswordError('');
-         console.log(name,photoUrl);
+        console.log(name, photoUrl);
 
         // Regular expressions for special character and numeric character
         const hasSpecialChar = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/.test(password);
         const hasNumericChar = /\d/.test(password);
-        
+
         const hasUppercase = /[A-Z]/.test(password);
         const hasLowercase = /[a-z]/.test(password);
         const hasValidLength = password.length >= 6;
@@ -61,6 +60,11 @@ const Register = () => {
 
     return (
         <div>
+            <div>
+                <Helmet>
+                    <title> MediMagic | Home</title>
+                </Helmet>
+            </div>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row gap-10">
                     <div className="text-center lg:text-left w-1/2 h-full">
@@ -93,10 +97,10 @@ const Register = () => {
                                 </label>
                                 <div className="flex">
                                     <input
-                                        type={ showPassword ? "text":"password"}
+                                        type={showPassword ? "text" : "password"}
                                         name="password" placeholder="Type here Password" className="input border-slate-300 pr-16" required />
-                                    <span onClick={()=>setShowPassword(!showPassword)} className="mt-4 -ml-5">
-                                        {showPassword?<FaEyeSlash></FaEyeSlash>: <FaEye></FaEye> }
+                                    <span onClick={() => setShowPassword(!showPassword)} className="mt-4 -ml-5">
+                                        {showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
                                     </span>
                                 </div>
                                 {passwordError && <p className="text-xs text-red-500">{passwordError}</p>}

@@ -5,6 +5,7 @@ import Main from "../Main/Main";
 import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
+import Home from "../Pages/Home/Home/Home";
 
 
 
@@ -25,10 +26,10 @@ import ErrorPage from "../Components/ErrorPage/ErrorPage";
             path: '/register',
             element: <Register></Register>
           },
-        // {
-        //   path: '/',
-        //   element: <Home></Home>
-        // },
+        {
+          path: '/',
+          element: <Home></Home>
+        },
     //     {
     //       path: '/menu',
     //       element: <Menu></Menu>
