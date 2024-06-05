@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import UseMedicineCart from "../../Hooks/UseMedicineCart";
 import SectionTitle from "../Shared/Section/SectionTitle";
+import { GoEye } from 'react-icons/go';
 
 const Shop = () => {
     const [carts] = UseMedicineCart();
@@ -59,7 +60,7 @@ const Shop = () => {
                                 <td>${item.price}</td>
                                 <td><button className="btn btn-primary">Add Cart</button></td>
                                 <td>
-                                    <button className="btn btn-secondary" onClick={() => medicineItemDetails(item._id)}>Details</button>
+                                    <button className="btn btn-secondary" onClick={() => medicineItemDetails(item._id)}><GoEye className='text-xl' /></button>
                                 </td>
                             </tr>
                         ))}

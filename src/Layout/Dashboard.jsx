@@ -113,8 +113,8 @@ const Dashboard = () => {
                         </NavLink>
                     </li>
                     <li >
-                        <NavLink to='/menu'>
-                            <FaList /> OUR MENU
+                        <NavLink to='/shop'>
+                            <FaList /> Shop
                         </NavLink>
                     </li>
                     <li >
