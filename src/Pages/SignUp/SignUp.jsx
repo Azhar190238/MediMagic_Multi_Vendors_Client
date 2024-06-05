@@ -17,11 +17,11 @@ const SignUp = () => {
     const { createUser, updatedUserProfile } = useContext(AuthContext)
     const navigate = useNavigate();
     const onSubmit = data => {
-        console.log(data);
+        // console.log(data);
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
-                console.log(loggedUser);
+                // console.log(loggedUser);
                 updatedUserProfile(data.name, data.photoUrl)
                     .then(() => {
                         const userInfo = {
@@ -32,7 +32,7 @@ const SignUp = () => {
                         axiosPublic.post('/users', userInfo)
                             .then(res => {
                                 if (res.data.insertedId) {
-                                    console.log('user added')
+                                    // console.log('user added')
                                     Swal.fire({
                                         position: "top-end",
                                         icon: "success",
@@ -43,7 +43,7 @@ const SignUp = () => {
                                     navigate('/');
                                 }
                             })
-                        console.log("user profile info Updated")
+                        // console.log("user profile info Updated")
                         reset();
 
 

@@ -7,12 +7,13 @@ import UseAxios from "../../../../Hooks/UseAxios";
 
 const image_hosting_key = import.meta.env.VITE_imageHosting;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+console.log('Image Hosting Key:', image_hosting_key);  // Add this line
 const AddMedicine = () => {
     const { register, handleSubmit, reset } = useForm();
     const axiosPublic = UseAxiosPublic();
     const axiosSecure = UseAxios();
     const onSubmit = async (data) => {
-        console.log(data);
+        // console.log(data);
         //image upload to imgbb then get an url
         const imageFile = { image: data.image[0] }
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
@@ -28,14 +29,14 @@ const AddMedicine = () => {
                 category: data.category,
                 massUnit: data.massUnit,
                 company: data.company,
-                disCountPrice: data.disCountPrice,
+                disCountPrice: data.disCountPrice ? parseFloat(data.disCountPrice) : 0,
                 price: parseFloat(data.price),
                 description: data.description,
                 image: res.data.data.display_url
             }
             // 
             const mediRes = await axiosSecure.post('/carts', medicineItem)
-            console.log(mediRes.data)
+            // console.log(mediRes.data)
             if (mediRes.data.insertedId) {
                 reset();
                 Swal.fire({
@@ -48,7 +49,7 @@ const AddMedicine = () => {
 
             }
         }
-        console.log('With image url', res.data)
+        // console.log('With image url', res.data)
     }
     return (
         <div>
@@ -181,7 +182,8 @@ const AddMedicine = () => {
                                     {...register("disCountPrice", { required: true })}
                                     type="number"
                                     placeholder="DisCount Price here"
-                                    className="input input-bordered w-full " />
+                                    className="input input-bordered w-full "
+                                    defaultValue={0} />
 
                             </label>
                         </div>

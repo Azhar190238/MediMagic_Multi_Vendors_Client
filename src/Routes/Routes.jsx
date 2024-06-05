@@ -24,6 +24,8 @@ import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 import SellerHome from "../Pages/Dashboard/SellerHome/SellerHome";
 import AddMedicine from "../Pages/Dashboard/Seller/AddMedicine/AddMedicine";
 import ErrorPage from "../Components/SocialLogIn/ErrorPage/ErrorPage";
+import ManageMedicine from "../Pages/Dashboard/Seller/ManageMedicine/ManageMedicine";
+import SellerRoutes from "./SellerRoutes";
 
   
  export const router = createBrowserRouter([
@@ -118,14 +120,13 @@ import ErrorPage from "../Components/SocialLogIn/ErrorPage/ErrorPage";
         // for seller
         {
           path: 'sellerHome',
-          element: <SellerHome></SellerHome>
+          element: <SellerRoutes><SellerHome></SellerHome></SellerRoutes>
  
        },
          {
-           path: 'addMedicine',
-           element:  <AddMedicine></AddMedicine> 
- 
-         },
+          path: 'manageMedicine',
+          element: <SellerRoutes> <ManageMedicine></ManageMedicine> </SellerRoutes>
+         }
 
         
       ]
