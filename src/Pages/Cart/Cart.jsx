@@ -1,10 +1,8 @@
 import Swal from "sweetalert2";
-// import UseCart from "../../Hooks/UseCart";
 import SectionTitle from "../Shared/Section/SectionTitle";
 import { FaTrashAlt } from "react-icons/fa";
 import UseAxios from "../../Hooks/UseAxios";
 import { Link } from "react-router-dom";
-// import UseMedicineCart from "../../Hooks/UseMedicineCart";
 import UseCart from "../../Hooks/UseCart";
 const Cart = () => {
     const [cart, refetch] = UseCart();
@@ -62,7 +60,9 @@ const Cart = () => {
                             </th>
                             <th>ITEM IMAGE</th>
                             <th>ITEM NAME</th>
-                            <th>PRICE</th>
+                            <th>Company</th>
+                            <th>PRICE PER UNIT</th>
+                            <th>Quantity</th>
                             <th>ACTION</th>
                         </tr>
                     </thead>
@@ -82,7 +82,11 @@ const Cart = () => {
                                 <td>
                                     {item.name}
                                 </td>
+                                <td>
+                                    {item.company}
+                                </td>
                                 <td>${item.price}</td>
+                                <td>Quantity</td>
                                 <th>
                                     <button onClick={() => handelDelete(item._id)}
                                         className="btn btn-ghost btn-xs"> <FaTrashAlt className="text-2xl text-red-400" /> </button>
