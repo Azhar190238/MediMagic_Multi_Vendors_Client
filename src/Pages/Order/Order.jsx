@@ -1,88 +1,215 @@
-import CoverAll from "../Shared/Cover/CoverAll";
 
-import orderImg from '../../assets/shop/banner2.jpg'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-import { useState } from "react";
-import UseMenu from "../../Hooks/UseMedicineCart";
-import RecommendCard from "../Home/ChefRecomended/Recommend/RecommendCard";
-import { useParams } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+// import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+// import 'react-tabs/style/react-tabs.css';
+// import { useState } from "react";
+// import { useParams } from "react-router-dom";
+// import { Helmet } from "react-helmet-async";
+// import UseMedicineCart from '../../Hooks/UseMedicineCart';
+// import Cart from '../Home/CategoryCard/Cart/Cart';
+// const Order = () => {
+//     const categories = ['analgesic', 'pizza','soups', 'desserts', 'drinks']
+//     const {category} =useParams();
+//     const initialIndex = categories.indexOf(category);
+
+//     const [tabIndex, setTabIndex] = useState(initialIndex);
+//     // const [carts] = Usecarts();
+//     const [carts] = UseMedicineCart();
+
+//     const analgesic = carts.filter(item => item.category === 'analgesic')
+//     const anti_inflammatory = carts.filter(item => item.category === 'anti_inflammatory')
+//     const Antibiotic = carts.filter(item => item.category === 'Antibiotic')
+//     const soup = carts.filter(item => item.category === 'soup')
+//     const drink = carts.filter(item => item.category === 'drinks')
+//     return (
+//         <div className="my-10 space-y-6">
+//               <Helmet>
+//                 <title>Bistro Boss | Order</title>
+//             </Helmet>
+          
+
+//             <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+//                 <TabList className='uppercase'>
+//                     <Tab>Analgesic</Tab>
+//                     <Tab>Anti-inflammatory</Tab>
+//                     <Tab>Antibiotic</Tab>
+//                     <Tab>desserts</Tab>
+//                     <Tab>Drinks</Tab>
+//                 </TabList>
+//                 <TabPanel>
+//                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ml-5">
+//                 {
+//                     analgesic.map(cart => <Cart
+//                          key={cart._id}
+//                          cart={cart}></Cart>)
+//                 }
+//             </div>
+//                 </TabPanel>
+//                 <TabPanel>
+//                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+//                 {
+//                     anti_inflammatory.map(cart => <Cart
+//                          key={cart._id}
+//                          cart={cart}></Cart>)
+//                 }
+//             </div>
+//                 </TabPanel> 
+
+//                 <TabPanel>
+//                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+//                 {
+//                     Antibiotic.map(cart => <Cart
+//                         key={cart._id}
+//                         cart={cart}></Cart>)
+//                 }
+//             </div>
+//                 </TabPanel>
+//                 {/* <TabPanel>
+//                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+//                 {
+//                     dessert.map(recommend => <RecommendCard
+//                          key={recommend._id}
+//                          recommend={recommend}></RecommendCard>)
+//                 }
+//             </div>
+//                 </TabPanel>
+//                 <TabPanel>
+//                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+//                 {
+//                     drink.map(recommend => <RecommendCard
+//                          key={recommend._id}
+//                          recommend={recommend}></RecommendCard>)
+//                 }
+//             </div>
+//                 </TabPanel>  */}
+                
+//             </Tabs>
+//         </div>
+//     );
+// };
+
+// export default Order;
+
+
+
+
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import UseMedicineCart from "../../Hooks/UseMedicineCart";
+import SectionTitle from "../Shared/Section/SectionTitle";
+import { GoEye } from 'react-icons/go';
+
 const Order = () => {
-    const categories = ['salad', 'pizza','soups', 'desserts', 'drinks']
-    const {category} =useParams();
-    const initialIndex = categories.indexOf(category);
+    const { category } = useParams();  // Get the category from the route parameter
+    const [carts] = UseMedicineCart();
+    const [filteredCarts, setFilteredCarts] = useState([]);
+    const [selectedItem, setSelectedItem] = useState(null);
 
-    const [tabIndex, setTabIndex] = useState(initialIndex);
-    const [menu] = UseMenu();
+    useEffect(() => {
+        // Filter the carts based on the category
+        setFilteredCarts(carts.filter(item => item.category === category));
+    }, [carts, category]);
 
-    const dessert = menu.filter(item => item.category === 'dessert')
-    const salad = menu.filter(item => item.category === 'salad')
-    const pizza = menu.filter(item => item.category === 'pizza')
-    const soup = menu.filter(item => item.category === 'soup')
-    const drink = menu.filter(item => item.category === 'drinks')
+    const medicineItemDetails = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:5000/carts/${id}`);
+            const data = await response.json();
+            setSelectedItem(data);
+            document.getElementById('my_modal_4').showModal();
+        } catch (error) {
+            console.error("Error fetching item details:", error);
+        }
+    };
+
     return (
-        <div className="my-10 space-y-6">
-              <Helmet>
-                <title>Bistro Boss | Order</title>
-            </Helmet>
-            <CoverAll img={orderImg} title='OUR SHOP'></CoverAll>
+        <div className="my-20 mx-16">
+            <SectionTitle subHeading="Please buy here!!" heading="Shop Medicine" />
 
-            <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-                <TabList className='uppercase'>
-                    <Tab>Salad</Tab>
-                    <Tab>Pizza</Tab>
-                    <Tab>soups</Tab>
-                    <Tab>desserts</Tab>
-                    <Tab>Drinks</Tab>
-                </TabList>
-                <TabPanel>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ml-5">
-                {
-                    salad.map(recommend => <RecommendCard
-                         key={recommend._id}
-                         recommend={recommend}></RecommendCard>)
-                }
+            <div className="overflow-x-auto">
+                <table className="table table-zebra">
+                    <thead>
+                        <tr>
+                            <th>SERIAL</th>
+                            <th>IMAGE</th>
+                            <th>Medicine NAME</th>
+                            <th>Category</th>
+                            <th>Company NAME</th>
+                            <th>Item Mass Unit</th>
+                            <th>PRICE</th>
+                            <th>Buy</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {filteredCarts.map((item, index) => (
+                            <tr key={item._id}>
+                                <td>{index + 1}</td>
+                                <td>
+                                    <div className="flex items-center gap-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src={item.image} alt="Medicine" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{item.itemName}</td>
+                                <td>{item.category}</td>
+                                <td>{item.company}</td>
+                                <td>{item.massUnit}</td>
+                                <td>${item.price}</td>
+                                <td><button className="btn btn-primary">Add Cart</button></td>
+                                <td>
+                                    <button className="btn btn-secondary" onClick={() => medicineItemDetails(item._id)}><GoEye className='text-xl' /></button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
-                </TabPanel>
-                <TabPanel>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {
-                    pizza.map(recommend => <RecommendCard
-                         key={recommend._id}
-                         recommend={recommend}></RecommendCard>)
-                }
-            </div>
-                </TabPanel>
-                <TabPanel>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {
-                    soup.map(recommend => <RecommendCard
-                         key={recommend._id}
-                         recommend={recommend}></RecommendCard>)
-                }
-            </div>
-                </TabPanel>
-                <TabPanel>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {
-                    dessert.map(recommend => <RecommendCard
-                         key={recommend._id}
-                         recommend={recommend}></RecommendCard>)
-                }
-            </div>
-                </TabPanel>
-                <TabPanel>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {
-                    drink.map(recommend => <RecommendCard
-                         key={recommend._id}
-                         recommend={recommend}></RecommendCard>)
-                }
-            </div>
-                </TabPanel>
-               
-            </Tabs>
+
+            {selectedItem && (
+                <dialog id="my_modal_4" className="modal">
+                    <div className="modal-box w-11/12 max-w-5xl">
+                        <div className=" bg-base-200">
+                            <div className="hero-content flex-col lg:flex-row">
+                                <div className=" h-full">
+                                    <img src={selectedItem.image} className="max-w-sm md:h-[500px] rounded-lg shadow-2xl" />
+                                </div>
+
+                                <div className="pl-10 space-y-4 ">
+                                    <h1 className="text-2xl font-bold"><span className="text-3xl">Medicine Name:</span> {selectedItem.itemName}</h1>
+                                    <div className="flex space-x-3">
+                                        <p className="text-lg font-bold"><span className="text-xl font-bold">Medicine Generic Name:</span> {selectedItem.genericName}</p>
+                                    </div>
+                                    <div className="flex space-x-3">
+                                        <p className="w-full text-lg"><span className="font-bold text-xl">Medicine Category: </span> {selectedItem.category}</p>
+                                    </div>
+                                    <div className="flex space-x-3">
+                                        <p className="w-full text-lg"><span className="font-bold text-xl">Medicine Company: </span> {selectedItem.company}</p>
+                                    </div>
+                                    <div className="flex space-x-3">
+                                        <p className="w-full text-lg"><span className="font-bold text-xl">Medicine Mass Unit: </span> {selectedItem.massUnit}</p>
+                                    </div>
+                                    <div className="flex space-x-3">
+                                        <p className="w-full text-lg"><span className="font-bold text-xl">Per Unit Price: </span> ${selectedItem.price}</p>
+                                    </div>
+                                    <div className="flex space-x-3">
+                                        <p className="w-full text-lg"><span className="font-bold text-xl">Discount Percentage: </span> {selectedItem.disCountPrice}</p>
+                                    </div>
+                                    <div className="flex space-x-3">
+                                        <p className="w-full text-lg"><span className="font-bold text-xl">Short description: </span> {selectedItem.description}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="modal-action">
+                            <form method="dialog">
+                                <button className="btn">Close</button>
+                            </form>
+                        </div>
+                    </div>
+                </dialog>
+            )}
         </div>
     );
 };

@@ -50,7 +50,10 @@ const Header = () => {
                     </button>
                 </Link>
             </li>
-            {user && <li><NavLink to='/addBlog'>My Profile</NavLink></li>}
+            {user && 
+            <li><NavLink to='/addBlog'>My Profile</NavLink></li>
+            
+            }
         </>
     );
 

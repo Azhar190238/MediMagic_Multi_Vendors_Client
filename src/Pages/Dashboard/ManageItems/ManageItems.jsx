@@ -34,9 +34,7 @@ const ManageItems = () => {
             }
         });
     }
-    const handelUpdatedItem = (item) => {
 
-    }
     return (
         <div>
             <SectionTitle

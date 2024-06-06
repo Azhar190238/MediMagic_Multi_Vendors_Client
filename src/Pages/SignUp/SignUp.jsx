@@ -74,13 +74,7 @@ const SignUp = () => {
                                     <input type="text" {...register("name", { required: true })} name="name" placeholder="User Name" className="input input-bordered" required />
                                     {errors.name && <span className="text-red-600">Name is required</span>}
                                 </div>
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Photo URL</span>
-                                    </label>
-                                    <input type="text" {...register("photoUrl", { required: true })} placeholder="Photo URl" className="input input-bordered" required />
-                                    {errors.photoUrl && <span className="text-red-600">Photo Url is required</span>}
-                                </div>
+
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Email</span>
@@ -115,6 +109,13 @@ const SignUp = () => {
                                         <option value="seller">Seller</option>
                                     </select>
                                     {errors.role && <span className="text-red-600">Role is required</span>}
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Photo URL</span>
+                                    </label>
+                                    <input type="text" {...register("photoUrl", { required: true })} placeholder="Photo URl" className="input input-bordered" required />
+                                    {errors.photoUrl && <span className="text-red-600">Photo Url is required</span>}
                                 </div>
 
                                 <div className="form-control mt-6">

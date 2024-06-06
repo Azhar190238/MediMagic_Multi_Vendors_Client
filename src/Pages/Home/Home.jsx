@@ -1,7 +1,6 @@
 // import { Helmet } from "react-helmet-async";
 import { Helmet } from "react-helmet-async";
 import Banner from "./Banner/Banner";
-import Category from "./Category/Category";
 import CategoryCard from "./CategoryCard/CategoryCard";
 import Contact from "./Contact/Contact";
 import PopularMenu from "./PopularMenu/PopularMenu";
@@ -16,7 +15,6 @@ const Home = () => {
                 <title>MediMagic | Home</title>
             </Helmet>
             <Banner></Banner>
-            <Category></Category>
             <PopularMenu></PopularMenu>
              <CategoryCard></CategoryCard>
              <DiscountMedicine></DiscountMedicine>
