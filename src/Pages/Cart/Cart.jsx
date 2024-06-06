@@ -1,14 +1,17 @@
 import Swal from "sweetalert2";
-import UseCart from "../../../Hooks/UseCart";
-import SectionTitle from "../../Shared/Section/SectionTitle";
+// import UseCart from "../../Hooks/UseCart";
+import SectionTitle from "../Shared/Section/SectionTitle";
 import { FaTrashAlt } from "react-icons/fa";
-import UseAxios from "../../../Hooks/UseAxios";
+import UseAxios from "../../Hooks/UseAxios";
 import { Link } from "react-router-dom";
+// import UseMedicineCart from "../../Hooks/UseMedicineCart";
+import UseCart from "../../Hooks/UseCart";
 const Cart = () => {
     const [cart, refetch] = UseCart();
     const totalPrice = cart.reduce((total, item) => total + item.price, 0)
     const axiosSecure = UseAxios();
     const handelDelete = id => {
+        refetch();
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -20,15 +23,16 @@ const Cart = () => {
         }).then((result) => {
             if (result.isConfirmed) {
             
-                axiosSecure.delete(`/carts/${id}`)
+                axiosSecure.delete(`/addCart/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
+                            refetch();
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
-                            refetch();
+                           
                         }
                     })
             }

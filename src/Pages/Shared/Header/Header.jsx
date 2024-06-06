@@ -42,17 +42,20 @@ const Header = () => {
             {
                 user && !isAdmin && !isSeller && <li><Link to='/dashboard/userHome'>Dashboard</Link></li>
             }
-            <li>
-                <Link to='/dashboard/cart'>
-                    <button className="flex space-x-2 p-1">
-                        <BsCartCheck className="text-2xl" />
-                        <div className="badge badge-secondary">+{cart.length}</div>
-                    </button>
-                </Link>
-            </li>
-            {user && 
-            <li><NavLink to='/addBlog'>My Profile</NavLink></li>
-            
+            {
+                user && <li>
+                    <NavLink to='/addCart'>
+                        <button className="flex space-x-2 p-1">
+                            <BsCartCheck className="text-2xl" />
+                            {/* <div className="badge badge-secondary">+{cart.length}</div> */}
+                        </button>
+                    </NavLink>
+                </li>
+            }
+
+            {user &&
+                <li><NavLink to='/addBlog'>My Profile</NavLink></li>
+
             }
         </>
     );

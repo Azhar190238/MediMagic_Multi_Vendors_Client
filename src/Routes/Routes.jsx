@@ -3,15 +3,13 @@ import {
   } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
-import Menu from "../Pages/Menu/Menu";
 import Order from "../Pages/Order/Order";
 import LogIn from "../Pages/LogIn/LogIn";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoutes from "./PrivateRoutes";
-import Secret from "../Pages/secret/Secret";
 import Profile from "../Pages/Profile/Profile";
 import Dashboard from "../Layout/Dashboard";
-import Cart from "../Pages/Dashboard/Cart/Cart";
+import Cart from "../Pages/Cart/Cart";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import AddItems from "../Pages/Dashboard/AddItems/AddItems";
 import AdminRoutes from "./AdminRoutes";
@@ -22,7 +20,6 @@ import PaymentHistory from "../Pages/Dashboard/PyamentHistory/PaymentHistory";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 import SellerHome from "../Pages/Dashboard/SellerHome/SellerHome";
-import AddMedicine from "../Pages/Dashboard/Seller/AddMedicine/AddMedicine";
 import ErrorPage from "../Components/SocialLogIn/ErrorPage/ErrorPage";
 import ManageMedicine from "../Pages/Dashboard/Seller/ManageMedicine/ManageMedicine";
 import SellerRoutes from "./SellerRoutes";
@@ -48,6 +45,7 @@ import Shop from "../Pages/Shop/Shop";
           element: <Order></Order>
         },
 
+
         {
           path: '/login',
           element: <LogIn></LogIn>
@@ -61,8 +59,8 @@ import Shop from "../Pages/Shop/Shop";
           element: <PrivateRoutes> <Profile></Profile> </PrivateRoutes>
         },
         {
-          path: '/secret',
-          element: <PrivateRoutes> <Secret></Secret> </PrivateRoutes>
+          path: '/addCart',
+          element: <PrivateRoutes> <Cart></Cart> </PrivateRoutes>
         }
 
       ]
