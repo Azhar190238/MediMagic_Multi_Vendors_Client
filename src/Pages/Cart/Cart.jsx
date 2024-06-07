@@ -5,15 +5,24 @@ import { FaTrashAlt } from "react-icons/fa";
 import UseAxios from "../../Hooks/UseAxios";
 import { Link } from "react-router-dom";
 import UseCart from "../../Hooks/UseCart";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Cart = () => {
     const [cart, refetch] = UseCart();
-    const [quantities, setQuantities] = useState(cart.map(() => 1)); // Default quantity is 1 for each item
+    const [quantities, setQuantities] = useState([]);
     const axiosSecure = UseAxios();
 
+    useEffect(() => {
+        const storedQuantities = JSON.parse(localStorage.getItem('cartQuantities'));
+        if (storedQuantities && storedQuantities.length === cart.length) {
+            setQuantities(storedQuantities);
+        } else {
+            setQuantities(cart.map(() => 1));
+        }
+    }, [cart]);
+
     const updateTotalPrice = () => {
-        return cart.reduce((total, item, index) => total + item.price * quantities[index], 0);
+        return cart.reduce((total, item, index) => total + item.price * (quantities[index] || 1), 0);
     };
 
     const handleDelete = id => {
@@ -44,8 +53,9 @@ const Cart = () => {
 
     const handleQuantityChange = (index, delta) => {
         const newQuantities = [...quantities];
-        newQuantities[index] = Math.max(1, newQuantities[index] + delta); // Prevent quantity from being less than 1
+        newQuantities[index] = Math.max(1, newQuantities[index] + delta);
         setQuantities(newQuantities);
+        localStorage.setItem('cartQuantities', JSON.stringify(newQuantities));
     };
 
     return (
@@ -56,8 +66,8 @@ const Cart = () => {
             />
             <div className="flex justify-evenly mb-8">
                 <h2 className="text-4xl font-bold">Total Items: {cart.length}</h2>
-                <h2 className="text-4xl font-bold">Total Price: ${updateTotalPrice()}</h2>
-                {cart.length ? <Link to={'/dashboard/payment'}><button className="btn btn-primary">Payment</button></Link>
+                <h2 className="text-4xl font-bold">Total Price: ${updateTotalPrice().toFixed(2)}</h2>
+                {cart.length ? <Link to={'/payment'}><button className="btn btn-primary">Payment</button></Link>
                     : <button disabled className="btn btn-primary">Payment</button>
                 }
             </div>
@@ -92,11 +102,11 @@ const Cart = () => {
                                 <td>{item.name}</td>
                                 <td>{item.company}</td>
                                 <td>${item.price}</td>
-                                <td>${item.price * quantities[index]}</td>
+                                <td>${item.price * (quantities[index] || 1)}</td>
                                 <td>
                                     <div className="flex items-center">
                                         <button className="btn btn-sm btn-primary" onClick={() => handleQuantityChange(index, -1)}>-</button>
-                                        <span className="mx-2">{quantities[index]}</span>
+                                        <span className="mx-2">{quantities[index] || 1}</span>
                                         <button className="btn btn-sm btn-primary" onClick={() => handleQuantityChange(index, 1)}>+</button>
                                     </div>
                                 </td>

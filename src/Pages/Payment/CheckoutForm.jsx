@@ -1,10 +1,10 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
-import UseAxios from '../../../Hooks/UseAxios'
-import UseCart from '../../../Hooks/UseCart'
-import UseAuth from "../../../Hooks/UseAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import UseAxios from "../../Hooks/UseAxios";
+import UseAuth from "../../Hooks/UseAuth";
+import UseCart from "../../Hooks/UseCart";
 const CheckoutForm = () => {
   const [error, setError] = useState();
  const [clientSecret, setClientSecret] = useState('');
@@ -95,7 +95,8 @@ const CheckoutForm = () => {
                 showConfirmButton: false,
                 timer: 1000
               });
-              navigate('/dashboard/paymentHistory');
+              // navigate('/dashboard/paymentHistory');
+              navigate('/invoicePage')
             }
            
           }
@@ -122,7 +123,7 @@ const CheckoutForm = () => {
         }}
       />
 
-      <button   className="btn btn-primary p-4 btn-sm" type="submit" 
+      <button   className="btn btn-primary p-4 my-10 btn-wide" type="submit" 
       disabled={!stripe || !clientSecret}>
         Pay
       </button> 

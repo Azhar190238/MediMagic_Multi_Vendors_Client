@@ -4,7 +4,6 @@ import { Tooltip } from 'react-tooltip';
 import { BsCartCheck } from "react-icons/bs";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
-import UseCart from "../../../Hooks/UseCart";
 import useAdmin from "../../../Hooks/useAdmin";
 import useSeller from "../../../Hooks/useSeller";
 
@@ -12,7 +11,7 @@ const Header = () => {
     const { user, logOut } = useContext(AuthContext);
     const [isSeller] = useSeller();
     const [isAdmin] = useAdmin();
-    const [cart] = UseCart();
+   
 
     const handleSignOut = () => {
         logOut().then().catch();
@@ -23,7 +22,7 @@ const Header = () => {
             <li><NavLink to='/'>Home</NavLink></li>
             <li><NavLink to='/shop'>Shop</NavLink></li>
             <li>
-                <NavLink to='/featureBlog'>
+                <NavLink to='/language'>
                     <div className="dropdown dropdown-hover">
                         <div tabIndex={0} role="button">Language</div>
                         <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow rounded-box w-52">

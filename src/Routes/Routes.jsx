@@ -15,7 +15,7 @@ import AddItems from "../Pages/Dashboard/AddItems/AddItems";
 import AdminRoutes from "./AdminRoutes";
 import ManageItems from "../Pages/Dashboard/ManageItems/ManageItems";
 import UpdatedItems from "../Pages/Dashboard/UpdatedItems/UpdatedItems";
-import Payment from "../Pages/Dashboard/Payment/Payment";
+// import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/PyamentHistory/PaymentHistory";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
@@ -24,6 +24,11 @@ import ErrorPage from "../Components/SocialLogIn/ErrorPage/ErrorPage";
 import ManageMedicine from "../Pages/Dashboard/Seller/ManageMedicine/ManageMedicine";
 import SellerRoutes from "./SellerRoutes";
 import Shop from "../Pages/Shop/Shop";
+import Payment from "../Pages/Payment/Payment";
+import InvoicePage from "../Pages/InvoicePage/InvoicePage";
+import PaymentManagement from "../Pages/Dashboard/PaymentManagement/PaymentManagement";
+import Advertisement from "../Pages/Dashboard/Seller/Advertisement/Advertisement";
+import PaymentSeller from "../Pages/Dashboard/Seller/PaymentHistorySeller/PaymentSeller";
 
   
  export const router = createBrowserRouter([
@@ -61,7 +66,16 @@ import Shop from "../Pages/Shop/Shop";
         {
           path: '/addCart',
           element: <PrivateRoutes> <Cart></Cart> </PrivateRoutes>
-        }
+        },
+        {
+          path: 'payment',
+          element: <PrivateRoutes><Payment></Payment></PrivateRoutes>
+        },
+        {
+          path: 'invoicePage',
+          element: <PrivateRoutes> <InvoicePage></InvoicePage> </PrivateRoutes>
+        },
+
 
       ]
     },
@@ -79,11 +93,6 @@ import Shop from "../Pages/Shop/Shop";
           path: 'cart',
           element: <Cart></Cart>
         },
-
-        {
-          path: 'payment',
-          element: <Payment></Payment>
-        },
         {
           path: 'paymentHistory',
           element: <PaymentHistory></PaymentHistory>
@@ -96,8 +105,8 @@ import Shop from "../Pages/Shop/Shop";
 
       },
         {
-          path: 'addItems',
-          element: <AdminRoutes> <AddItems></AddItems> </AdminRoutes>
+          path: 'managePayment',
+          element: <AdminRoutes> <PaymentManagement></PaymentManagement> </AdminRoutes>
 
         },
         {
@@ -125,6 +134,14 @@ import Shop from "../Pages/Shop/Shop";
          {
           path: 'manageMedicine',
           element: <SellerRoutes> <ManageMedicine></ManageMedicine> </SellerRoutes>
+         },
+         {
+          path: 'advertisement',
+          element: <SellerRoutes> <Advertisement></Advertisement> </SellerRoutes>
+         },
+         {
+          path: 'paymentHistorySeller',
+          element: <SellerRoutes> <PaymentSeller></PaymentSeller> </SellerRoutes>
          }
 
         

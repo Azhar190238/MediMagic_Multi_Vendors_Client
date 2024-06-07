@@ -1,13 +1,11 @@
 
-import { FaBook, FaCalendar, FaCartPlus, FaEnvelope, FaHome, FaList, FaPaypal, FaRev, FaUsers, FaUtensils } from "react-icons/fa";
+import { FaBook, FaCalendar, FaHome, FaList, FaPaypal, FaUsers, FaUtensils } from "react-icons/fa";
 import { FaShop } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
-import UseCart from "../Hooks/UseCart";
 import useAdmin from "../Hooks/useAdmin";
 import useSeller from "../Hooks/useSeller";
 
 const Dashboard = () => {
-    const [cart] = UseCart();
     const [isAdmin] = useAdmin();
     const [isSeller] = useSeller();
     return (
@@ -19,7 +17,7 @@ const Dashboard = () => {
                         <>
                             <li>
                                 <NavLink to='/dashboard/adminHome'>
-                                    <FaHome /> ADMIN HOME
+                                    <FaHome /> Admin Home
                                 </NavLink>
                             </li>
                             <li>
@@ -61,13 +59,13 @@ const Dashboard = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to='/dashboard/paymentHistory'>
-                                    <FaPaypal /> PAYMENT HISTORY
+                                <NavLink to='/dashboard/paymentHistorySeller'>
+                                    <FaPaypal /> Payment History
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to='/dashboard/booking'>
-                                    <FaList /> MY Adding List 
+                                <NavLink to='/dashboard/advertisement'>
+                                    <FaList /> Ask for Advertisement
                                 </NavLink>
                             </li>
                         </>
@@ -75,32 +73,12 @@ const Dashboard = () => {
                         <>
                             <li>
                                 <NavLink to='/dashboard/userHome'>
-                                    <FaHome /> USER HOME
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to='/dashboard/reservation'>
-                                    <FaCalendar /> RESERVATION
+                                    <FaHome /> User Home
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink to='/dashboard/paymentHistory'>
-                                    <FaPaypal /> PAYMENT HISTORY
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to='/dashboard/cart'>
-                                    <FaCartPlus /> MY CART ({cart.length})
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to='/dashboard/review'>
-                                    <FaRev /> ADD REVIEW
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to='/dashboard/booking'>
-                                    <FaList /> MY BOOKING
+                                    <FaPaypal /> Payment History
                                 </NavLink>
                             </li>
                         </>
@@ -118,13 +96,8 @@ const Dashboard = () => {
                         </NavLink>
                     </li>
                     <li >
-                        <NavLink to='/order/salad'>
+                        <NavLink to='/addCart'>
                             <FaShop />ORDER SHOP
-                        </NavLink>
-                    </li>
-                    <li >
-                        <NavLink to='/CONTACT'>
-                            <FaEnvelope />Contact Us
                         </NavLink>
                     </li>
                 </ul>
