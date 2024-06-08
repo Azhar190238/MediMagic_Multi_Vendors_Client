@@ -36,7 +36,7 @@ const Dashboard = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to='/dashboard/manageAdvertise'>
+                                <NavLink to='/dashboard/adminAdvertise'>
                                     <FaBook /> Manage Banner Advertise
                                 </NavLink>
                             </li>

@@ -29,6 +29,7 @@ import InvoicePage from "../Pages/InvoicePage/InvoicePage";
 import PaymentManagement from "../Pages/Dashboard/PaymentManagement/PaymentManagement";
 import Advertisement from "../Pages/Dashboard/Seller/Advertisement/Advertisement";
 import PaymentSeller from "../Pages/Dashboard/Seller/PaymentHistorySeller/PaymentSeller";
+import AdminAdvertisement from "../Pages/Dashboard/AdminAdvertisement/AdminAdvertisement";
 
   
  export const router = createBrowserRouter([
@@ -118,6 +119,10 @@ import PaymentSeller from "../Pages/Dashboard/Seller/PaymentHistorySeller/Paymen
           path: 'manageItems',
           element: <AdminRoutes> <ManageItems></ManageItems> </AdminRoutes>
 
+        },
+        {
+          path: 'adminAdvertise',
+          element: <AdminRoutes> <AdminAdvertisement></AdminAdvertisement> </AdminRoutes>
         },
 
         {

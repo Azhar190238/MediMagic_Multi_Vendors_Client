@@ -5,7 +5,7 @@ import UseAuth from "../../../../Hooks/UseAuth";
 import UseAxiosPublic from "../../../../Hooks/UseAxiosPublic";
 import UseAxios from "../../../../Hooks/UseAxios";
 import SectionTitle from "../../../Shared/Section/SectionTitle";
-import UseAdvertisementCart from "../../../../Hooks/UseAdvertisement";
+import UseAdvertisementCart from "../../../../Hooks/UseAdvertisementCart";
 const image_hosting_key = import.meta.env.VITE_imageHosting;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 console.log('Image Hosting Key:', image_hosting_key);
@@ -45,6 +45,7 @@ const Advertisement = () => {
         if (res.data.success) {
             const advertisementItem = {
                 description: data.description,
+                name: data.name,
                 image: res.data.data.display_url,
                 userEmail: user.email,
                 status: 'advertise-pending', // Set default status here
@@ -122,6 +123,19 @@ const Advertisement = () => {
                                             <input {...register("image", { required: true })} type="file" className="file-input w-full max-w-xs" />
                                         </label>
                                     </div>
+                                </div>
+                                <div>
+                                <label className="form-control w-full my-6">
+                                            <div className="label">
+                                                <span className="label-text">Item Name</span>
+                                            </div>
+                                            <input
+                                                {...register("name", { required: true })}
+                                                type="text"
+                                                placeholder="Item Name here"
+                                                className="input input-bordered w-full"
+                                            />
+                                        </label>
                                 </div>
                                 <label className="form-control mb-5">
                                     <div className="label">

@@ -1,8 +1,9 @@
+import PaymentHistory from "../../PyamentHistory/PaymentHistory";
 
 const PaymentSeller = () => {
     return (
         <div>
-            <h2>Allhamdulilah all seller payment history showing</h2>
+           <PaymentHistory></PaymentHistory>
         </div>
     );
 };

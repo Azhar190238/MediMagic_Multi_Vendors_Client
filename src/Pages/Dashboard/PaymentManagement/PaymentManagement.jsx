@@ -106,7 +106,7 @@ const PaymentManagement = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `${payment.name} is now Paid`,
+                    title: `This Transaction  is now Paid`,
                     showConfirmButton: false,
                     timer: 1500
                 });
