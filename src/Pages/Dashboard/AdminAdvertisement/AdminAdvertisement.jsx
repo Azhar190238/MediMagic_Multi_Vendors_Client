@@ -1,25 +1,3 @@
-// // import UseAdvertisementCart from "../../../Hooks/UseAdvertisementCart";
-
-
-// // const AdminAdvertisement = () => {
-
-// //     const [advertisement, refetch] = UseAdvertisementCart();
-// //     return (
-// //         <div>
-// //            <h2>Alhamdulilah advertisement: {advertisement.length}</h2> 
-
-// //            <div className="overflow-x-auto">
-// //                 <table className="table">
-// //                     {/* head */}
-// //                     <thead>
-// //                         <tr>
-// //                             <th>Serial</th>
-// //                             <th>Seller Email</th>
-// //                             <th>Medicine Image</th>
-// //                             <th>Medicine Name</th>
-// //                             <th>Description</th>
-// //                             <th>Action</th>
-                            
 
 import { useState } from "react";
 import UseAdvertisementCart from "../../../Hooks/UseAdvertisementCart";

@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import UseMedicineCart from "../../Hooks/UseMedicineCart";
 import SectionTitle from "../Shared/Section/SectionTitle";
 import { GoEye } from 'react-icons/go';
@@ -16,10 +16,13 @@ const Shop = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const axiosSecure = UseAxios();
+    const [searchTerm, setSearchTerm] = useState('');
+    const [sortOrder, setSortOrder] = useState('asc');
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
 
     const handelCard = (item) => {
         if (user && user.email) {
-            // send cart item to database
             const cartItem = {
                 cartId: item._id,
                 email: user.email,
@@ -38,7 +41,6 @@ const Shop = () => {
                             showConfirmButton: false,
                             timer: 1500
                         });
-                        // refetch cart to update the cart items
                         refetch();
                     }
                 });
@@ -61,9 +63,8 @@ const Shop = () => {
 
     const medicineItemDetails = async (id) => {
         try {
-            const response = await fetch(`http://localhost:5000/carts/${id}`);
-            const data = await response.json();
-            setSelectedItem(data);
+            const response = await axiosSecure.get(`/carts/${id}`);
+            setSelectedItem(response.data);
             setIsModalOpen(true);
         } catch (error) {
             console.error("Error fetching item details:", error);
@@ -75,9 +76,48 @@ const Shop = () => {
         setSelectedItem(null);
     };
 
+    const filteredItems = useMemo(() => {
+        return carts.filter(item =>
+            item.itemName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            item.genericName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            item.company.toLowerCase().includes(searchTerm.toLowerCase())
+        ).sort((a, b) => {
+            if (sortOrder === 'asc') {
+                return a.price - b.price;
+            } else {
+                return b.price - a.price;
+            }
+        });
+    }, [carts, searchTerm, sortOrder]);
+
+    const paginatedItems = useMemo(() => {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        return filteredItems.slice(startIndex, startIndex + itemsPerPage);
+    }, [filteredItems, currentPage]);
+
+    const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+
     return (
         <div className="my-20 mx-16">
             <SectionTitle subHeading="Please buy here!!" heading="Shop Medicine" />
+            
+            <div className="mb-4 flex justify-between">
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="input input-bordered"
+                />
+                <select
+                    value={sortOrder}
+                    onChange={(e) => setSortOrder(e.target.value)}
+                    className="select select-bordered"
+                >
+                    <option value="asc">Sort by Price: Low to High</option>
+                    <option value="desc">Sort by Price: High to Low</option>
+                </select>
+            </div>
 
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
@@ -95,9 +135,9 @@ const Shop = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {carts.map((item, index) => (
+                        {paginatedItems.map((item, index) => (
                             <tr key={item._id}>
-                                <td>{index + 1}</td>
+                                <td>{index + 1 + (currentPage - 1) * itemsPerPage}</td>
                                 <td>
                                     <div className="flex items-center gap-3">
                                         <div className="avatar">
@@ -120,6 +160,18 @@ const Shop = () => {
                         ))}
                     </tbody>
                 </table>
+            </div>
+
+            <div className="flex justify-center mt-4">
+                {Array.from({ length: totalPages }, (_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => setCurrentPage(index + 1)}
+                        className={`btn ${currentPage === index + 1 ? 'btn-primary' : ''}`}
+                    >
+                        {index + 1}
+                    </button>
+                ))}
             </div>
 
             {isModalOpen && selectedItem && (
@@ -167,5 +219,3 @@ const Shop = () => {
 };
 
 export default Shop;
-
-

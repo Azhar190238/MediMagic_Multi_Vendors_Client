@@ -1,46 +1,57 @@
 
+// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+// import { Carousel } from 'react-responsive-carousel';
+// import UseAdvertisementCart from "../../../Hooks/UseAdvertisementCart";
+
+
+// const Banner = () => {
+//     const [advertisement] = UseAdvertisementCart();
+
+//     // Filter advertisements to only include those with status 'advertised'
+//     const advertisedAds = advertisement.filter(ad => ad.status === 'advertised');
+
+//     return (
+//         <div>
+//             <h3>Advertisement: {advertisedAds.length}</h3>
+//             <Carousel showThumbs={false} autoPlay infiniteLoop>
+//                 {advertisedAds.map((ad, index) => (
+//                     <div key={ad._id}>
+//                         <img src={ad.image} alt={`Advertisement ${index + 1}`} />
+//                     </div>
+//                  ))}
+
+              
+//             </Carousel>
+//         </div>
+//     );
+// };
+
+// export default Banner;
+
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import img1 from '../../../assets/home/01.jpg'
-import img2 from '../../../assets/home/02.jpg'
-import img3 from '../../../assets/home/03.png'
-import img4 from '../../../assets/home/04.jpg'
-import img5 from '../../../assets/home/05.png'
-import img6 from '../../../assets/home/06.png'
-
+import UseAdvertisementCart from "../../../Hooks/UseAdvertisementCart";
 
 const Banner = () => {
+    const [advertisement] = UseAdvertisementCart();
+
+    // Filter advertisements to only include those with status 'advertised'
+    const advertisedAds = advertisement.filter(ad => ad.status === 'advertised');
+
     return (
         <div>
-            <Carousel>
-                <div>
-                    <img src={img1} />
-                   
-                </div>
-                <div>
-                    <img src={img2} />
-                   
-                </div>
-                <div>
-                    <img src={img3} />
-                   
-                </div>
-                <div>
-                    <img src={img4} />
-                   
-                </div>
-                <div>
-                    <img src={img5} />
-                   
-                </div>
-                <div>
-                    <img src={img6} />
-                   
-                </div>
-           
+            <h3 className="text-xl font-bold mb-4">Advertisement: {advertisedAds.length}</h3>
+            <Carousel showThumbs={false} autoPlay infiniteLoop>
+                {advertisedAds.map((ad, index) => (
+                    <div key={ad._id} className="h-[600px] flex justify-center items-center rounded-xl overflow-hidden">
+                        <img src={ad.image} alt={`Advertisement ${index + 1}`} className="h-full object-cover"/>
+                    </div>
+                ))}
             </Carousel>
         </div>
     );
 };
 
 export default Banner;
+
+
