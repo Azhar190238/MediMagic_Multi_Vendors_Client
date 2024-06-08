@@ -110,11 +110,11 @@ import AdminAdvertisement from "../Pages/Dashboard/AdminAdvertisement/AdminAdver
           element: <AdminRoutes> <PaymentManagement></PaymentManagement> </AdminRoutes>
 
         },
-        {
-          path: 'updatedItems/:id',
-          element: <AdminRoutes> <UpdatedItems></UpdatedItems> </AdminRoutes>,
-          loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
-        },
+        // {
+        //   path: 'updatedItems/:id',
+        //   element: <AdminRoutes> <UpdatedItems></UpdatedItems> </AdminRoutes>,
+        //   loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+        // },
         {
           path: 'manageItems',
           element: <AdminRoutes> <ManageItems></ManageItems> </AdminRoutes>
