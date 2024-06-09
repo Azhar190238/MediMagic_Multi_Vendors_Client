@@ -12,10 +12,9 @@ const DiscountCart = ({ cart }) => {
                 <h2 className="absolute right-0 bg-slate-800 text-white mr-16 mt-16 p-2 rounded-md">$ {cart.price}</h2>
                 <div className="card-body items-center text-center">
                     <p className="card-title text-2xl ">{cart.category}</p>
-                    <div className="card-actions">
-                        <button  className="btn btn-outline border-0 border-orange-400 border-b-4"> Details</button>
-                    </div>
+                    <p className="card-title text-2xl text-green-600 "> Discount Price: ${cart.disCountPrice}</p>
                 </div>
+              
             </div>
         </div>
         </div>

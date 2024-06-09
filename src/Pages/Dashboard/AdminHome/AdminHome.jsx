@@ -38,10 +38,11 @@ import UseAxios from "../../../Hooks/UseAxios";
 
 const AdminHome = () => {
     const { user } = UseAuth();
+    console.log('admin ', user.password)
     const axiosSecure = UseAxios();
 
     // Fetch payments data using react-query
-    const { data: payments = [], refetch } = useQuery({
+    const { data: payments = [] } = useQuery({
         queryKey: ['payments'],
         queryFn: async () => {
             const res = await axiosSecure.get('/payments');

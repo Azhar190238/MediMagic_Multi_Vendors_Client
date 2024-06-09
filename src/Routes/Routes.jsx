@@ -11,11 +11,7 @@ import Profile from "../Pages/Profile/Profile";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Cart/Cart";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
-import AddItems from "../Pages/Dashboard/AddItems/AddItems";
 import AdminRoutes from "./AdminRoutes";
-import ManageItems from "../Pages/Dashboard/ManageItems/ManageItems";
-import UpdatedItems from "../Pages/Dashboard/UpdatedItems/UpdatedItems";
-// import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/PyamentHistory/PaymentHistory";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
@@ -30,6 +26,9 @@ import PaymentManagement from "../Pages/Dashboard/PaymentManagement/PaymentManag
 import Advertisement from "../Pages/Dashboard/Seller/Advertisement/Advertisement";
 import PaymentSeller from "../Pages/Dashboard/Seller/PaymentHistorySeller/PaymentSeller";
 import AdminAdvertisement from "../Pages/Dashboard/AdminAdvertisement/AdminAdvertisement";
+import AdminCategories from "../Pages/Dashboard/Categories/AdminCategories";
+import AdminCategoriesUpdated from "../Pages/Dashboard/Categories/AdminCategoriesUpdated";
+import SalesReport from "../Pages/Dashboard/SalesReport/SalesReport";
 
   
  export const router = createBrowserRouter([
@@ -105,24 +104,28 @@ import AdminAdvertisement from "../Pages/Dashboard/AdminAdvertisement/AdminAdver
          element: <AdminRoutes><AdminHome></AdminHome></AdminRoutes>
 
       },
+      {
+        path: 'adminCategories',
+        element: <AdminRoutes> <AdminCategories></AdminCategories> </AdminRoutes>
+
+     },
         {
           path: 'managePayment',
           element: <AdminRoutes> <PaymentManagement></PaymentManagement> </AdminRoutes>
 
         },
-        // {
-        //   path: 'updatedItems/:id',
-        //   element: <AdminRoutes> <UpdatedItems></UpdatedItems> </AdminRoutes>,
-        //   loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
-        // },
         {
-          path: 'manageItems',
-          element: <AdminRoutes> <ManageItems></ManageItems> </AdminRoutes>
-
+          path: 'updatedCategory/:id',
+          element: <AdminRoutes> <AdminCategoriesUpdated></AdminCategoriesUpdated> </AdminRoutes>,
+          loader: ({params}) => fetch(`http://localhost:5000/categories/${params.id}`)
         },
         {
           path: 'adminAdvertise',
           element: <AdminRoutes> <AdminAdvertisement></AdminAdvertisement> </AdminRoutes>
+        },
+        {
+          path: 'salesReport',
+          element: <AdminRoutes> <SalesReport></SalesReport> </AdminRoutes>
         },
 
         {

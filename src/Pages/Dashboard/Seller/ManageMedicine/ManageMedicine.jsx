@@ -165,11 +165,12 @@ const ManageMedicine = () => {
                                             </div>
                                             <select defaultValue='default' {...register('category', { required: true })} className="select select-primary w-full">
                                                 <option disabled value='default'>Select a Category</option>
-                                                <option value='analgesic'>Analgesic</option>
-                                                <option value='anti-inflammatory'>Anti-inflammatory</option>
-                                                <option value='antibiotic'>Antibiotic</option>
-                                                <option value='antihistamine'>Antihistamine</option>
-                                                <option value='antacid'>Antacid</option>
+                                                <option value='tablet'>Tablet</option>
+                                                <option value='capsule'>Capsule</option>
+                                                <option value='injection'>Injection</option>
+                                                <option value='drops'>Drops</option>
+                                                <option value='syrups'>Syrups</option>
+                                                <option value='ointment'>Ointment</option>
                                             </select>
                                         </label>
                                     </div>

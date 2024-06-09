@@ -1,9 +1,10 @@
 
-import { FaBook, FaCalendar, FaHome, FaList, FaPaypal, FaUsers, FaUtensils } from "react-icons/fa";
+import { FaBook, FaCalendar, FaHome, FaList, FaPaypal, FaUsers } from "react-icons/fa";
 import { FaShop } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
 import useSeller from "../Hooks/useSeller";
+import { BiCategory } from "react-icons/bi";
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
@@ -21,8 +22,8 @@ const Dashboard = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to='/dashboard/addItems'>
-                                    <FaUtensils /> Manage Categories
+                                <NavLink to='/dashboard/adminCategories'>
+                                <BiCategory/> Manage Categories
                                 </NavLink>
                             </li>
                             <li>
@@ -31,7 +32,7 @@ const Dashboard = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to='/dashboard/manageBookings'>
+                                <NavLink to='/dashboard/salesReport'>
                                     <FaBook /> Sales Report
                                 </NavLink>
                             </li>

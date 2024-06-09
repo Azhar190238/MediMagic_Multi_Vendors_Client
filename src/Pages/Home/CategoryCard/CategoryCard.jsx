@@ -1,35 +1,30 @@
 
 
-import UseMedicineCart from "../../../Hooks/UseMedicineCart";
+
+
+import UseCategory from "../../../Hooks/UseCategory";
 import SectionTitle from "../../Shared/Section/SectionTitle";
 import Cart from "./Cart/Cart";
 
 const CategoryCard = () => {
-    const [carts] = UseMedicineCart();
-
-    // Get the latest item for each category
-    const latestCarts = carts.reduce((latest, item) => {
-        if (!latest[item.category] || latest[item.category].date < item.date) {
-            latest[item.category] = item;
-        }
-        return latest;
-    }, {});
+    const [categories] = UseCategory();
 
     return (
         <div>
             <SectionTitle
                 subHeading="That's need!!"
-                heading='Category Medicine'>
-            </SectionTitle>
-            <div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {Object.values(latestCarts).map(cart => (
-                        <Cart key={cart._id} cart={cart}></Cart>
-                    ))}
-                </div>
+                heading="Category Medicine"
+            />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {categories.map(cart => (
+                    <div key={cart._id} className="flex h-full">
+                        <Cart cart={cart} className="w-full h-full" />
+                    </div>
+                ))}
             </div>
         </div>
     );
 };
 
 export default CategoryCard;
+

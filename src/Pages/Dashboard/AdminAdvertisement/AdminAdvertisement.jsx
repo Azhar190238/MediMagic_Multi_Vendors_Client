@@ -42,7 +42,6 @@ const AdminAdvertisement = () => {
 
     return (
         <div>
-            <h2>Alhamdulilah advertisement: {advertisement.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table">
                     <thead>

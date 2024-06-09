@@ -40,7 +40,6 @@ const Banner = () => {
 
     return (
         <div>
-            <h3 className="text-xl font-bold mb-4">Advertisement: {advertisedAds.length}</h3>
             <Carousel showThumbs={false} autoPlay infiniteLoop>
                 {advertisedAds.map((ad, index) => (
                     <div key={ad._id} className="h-[600px] flex justify-center items-center rounded-xl overflow-hidden">

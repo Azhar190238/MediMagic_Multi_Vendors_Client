@@ -48,20 +48,22 @@ const Cart = ({ cart }) => {
         return acc;
     }, {});
 
-    const { price, category, image } = cart;
+    const { categoryName, image } = cart;
+
+    // Get the count of items for the current category, defaulting to 0 if none exist
+    const categoryCount = categoryCounts[categoryName] || 0;
 
     return (
         <div>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <figure className="px-10 pt-10">
-                    <img className="rounded-xl" src={image} alt={`Image of ${category}`} />
+                    <img className="rounded-xl" src={image} alt='image' />
                 </figure>
-                <h2 className="absolute right-0 bg-slate-800 text-white mr-16 mt-16 p-2 rounded-md">$ {price}</h2>
                 <div className="card-body items-center text-center">
-                    <h2 className="card-title text-2xl uppercase">{category}</h2>
-                    <p className="text-lg">Number of categories: {categoryCounts[category]}</p>
+                    <h2 className="card-title text-2xl uppercase">{categoryName}</h2>
+                    <p className="text-lg">Number of  Medicines: {categoryCount}</p>
                     <div className="card-actions">
-                        <Link to={`/order/${category}`}>
+                        <Link to={`/order/${categoryName}`}>
                             <button className="btn btn-outline border-0 border-orange-400 border-b-4">Displaying All</button>
                         </Link>
                     </div>
@@ -72,4 +74,5 @@ const Cart = ({ cart }) => {
 };
 
 export default Cart;
+
 
