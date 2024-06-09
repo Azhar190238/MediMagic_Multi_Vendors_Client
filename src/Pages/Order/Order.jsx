@@ -9,7 +9,7 @@ import UseAuth from '../../Hooks/UseAuth';
 import UseAxios from '../../Hooks/UseAxios';
 
 const Order = () => {
-    const { category } = useParams();  // Get the category from the route parameter
+    const { category } = useParams();  
     const [carts, refetch] = UseMedicineCart();
     const [filteredCarts, setFilteredCarts] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null);

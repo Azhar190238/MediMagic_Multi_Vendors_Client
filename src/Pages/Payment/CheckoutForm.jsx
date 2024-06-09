@@ -85,7 +85,6 @@ const CheckoutForm = () => {
               status: 'pending'
             }
             const res = await axiosSecure.post('/payment', payment);
-            // console.log('payment saved',res);
             refetch();
             if(res.data?.paymentResult?.insertedId){
               Swal.fire({

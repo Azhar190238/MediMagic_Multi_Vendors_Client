@@ -40,17 +40,17 @@ const Footer = () => {
             <header className="text-2xl font-extrabold mx-auto lg:mx-0">Support</header>
             <a className="link link-hover text-[#FFFFFF99] mx-auto lg:mx-0">Help Center</a>
             <a className="link link-hover text-[#FFFFFF99] mx-auto lg:mx-0">FAQ</a>
-            <a className="link link-hover text-[#FFFFFF99] mx-auto lg:mx-0">Tourist Spot Support</a>
+            <a className="link link-hover text-[#FFFFFF99] mx-auto lg:mx-0">Medicine Support</a>
             <a className="link link-hover text-[#FFFFFF99] mx-auto lg:mx-0">Contact us</a>
           </nav>
         </div>
         <nav className="space-y-1 mx-auto">
           <header className="text-2xl font-extrabold mx-auto lg:mx-0">Services</header>
-          <a className="link link-hover text-[#FFFFFF99] mx-auto lg:mx-0">Tourist Guid</a>
-          <a className="link link-hover text-[#FFFFFF99] mx-auto lg:mx-0">Group Guid</a>
-          <a className="link link-hover text-[#FFFFFF99] mx-auto lg:mx-0">Private Guid</a>
-          <a className="link link-hover text-[#FFFFFF99] mx-auto lg:mx-0">Guid for kids</a>
-          <a className="link link-hover text-[#FFFFFF99] mx-auto lg:mx-0">Guid for Adult</a>
+          <a className="link link-hover text-[#FFFFFF99] mx-auto lg:mx-0">Medicine Guid</a>
+          <a className="link link-hover text-[#FFFFFF99] mx-auto lg:mx-0">Group Medicine</a>
+          <a className="link link-hover text-[#FFFFFF99] mx-auto lg:mx-0">Private Medicine</a>
+          <a className="link link-hover text-[#FFFFFF99] mx-auto lg:mx-0">Medicine for kids</a>
+          <a className="link link-hover text-[#FFFFFF99] mx-auto lg:mx-0">Medicine for Adult</a>
         </nav>
       </footer>
     </div>
