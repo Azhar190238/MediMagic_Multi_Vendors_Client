@@ -1,33 +1,4 @@
 
-// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-// import { Carousel } from 'react-responsive-carousel';
-// import UseAdvertisementCart from "../../../Hooks/UseAdvertisementCart";
-
-
-// const Banner = () => {
-//     const [advertisement] = UseAdvertisementCart();
-
-//     // Filter advertisements to only include those with status 'advertised'
-//     const advertisedAds = advertisement.filter(ad => ad.status === 'advertised');
-
-//     return (
-//         <div>
-//             <h3>Advertisement: {advertisedAds.length}</h3>
-//             <Carousel showThumbs={false} autoPlay infiniteLoop>
-//                 {advertisedAds.map((ad, index) => (
-//                     <div key={ad._id}>
-//                         <img src={ad.image} alt={`Advertisement ${index + 1}`} />
-//                     </div>
-//                  ))}
-
-              
-//             </Carousel>
-//         </div>
-//     );
-// };
-
-// export default Banner;
-
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import UseAdvertisementCart from "../../../Hooks/UseAdvertisementCart";
