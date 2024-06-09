@@ -5,7 +5,7 @@ import { axiosPublic } from "../../../Hooks/UseAxiosPublic";
 import SectionTitle from "../../Shared/Section/SectionTitle";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
-import { FaTrashAlt } from "react-icons/fa";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const image_hosting_key = import.meta.env.VITE_imageHosting;
@@ -127,7 +127,7 @@ const AdminCategories = () => {
                                 <td>
                                     {/* */}
                                     <Link to={`/dashboard/updatedCategory/${item._id}`}> <button  className="btn btn-ghost bg-blue-500">
-                                       Updated
+                                    <FaEdit className="text-xl text-white"/>
                                     </button></Link>
                                 </td>
                                 <td>
