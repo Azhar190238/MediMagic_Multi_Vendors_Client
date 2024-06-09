@@ -53,7 +53,7 @@ const Header = () => {
             }
 
             {user &&
-                <li><NavLink to='/addBlog'>My Profile</NavLink></li>
+                <li><NavLink to='/profile'>My Profile</NavLink></li>
 
             }
         </>
