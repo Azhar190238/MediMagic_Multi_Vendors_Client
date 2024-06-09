@@ -39,14 +39,13 @@ const AdminCategoriesUpdated = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `${item.name} updated Successfuly`,
+                    title: `Updated Successfully done`,
                     showConfirmButton: false,
                     timer: 1500
                 });
             }
             reset();
         }
-        console.log('With image url', res.data)
     }
     return (
         <div>
