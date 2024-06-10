@@ -26,7 +26,6 @@ const Header = () => {
                     <div className="dropdown dropdown-hover">
                         <div tabIndex={0} role="button">Language</div>
                         <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow rounded-box w-52">
-                            <li><a>English</a></li>
                             <li><a>Bangla</a></li>
                         </ul>
                     </div>

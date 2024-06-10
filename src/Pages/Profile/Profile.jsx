@@ -3,15 +3,23 @@ import UseAuth from "../../Hooks/UseAuth";
 
 const Profile = () => {
     const { user } = UseAuth();
+    console.log(user);
 
     return (
         <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <img src={user.image} className="max-w-sm rounded-lg shadow-2xl" />
-          <div>
-            <h1 className="text-5xl font-bold">Box Office News!</h1>
-            <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-            <button className="btn btn-primary">Get Started</button>
+            <div className=" w-1/2">
+            <img src={user?.photoURL} className=" w-96 rounded-lg shadow-2xl" />
+            </div>
+          
+          <div className="w-1/2 text-center" >
+            <h1 className="text-5xl font-bold">{user.displayName}</h1>
+            <p className="py-6">As a CSE student, focus on building a strong foundation in programming and algorithms by practicing coding regularly.
+                 Engage in projects, internships,
+                 and hackathons to gain practical experience and improve problem-solving skills.
+                  Stay updated with the latest technology trends and continuously learn new tools
+                   and languages to stay competitive in the field.</p>
+           
           </div>
         </div>
       </div>
