@@ -1,40 +1,8 @@
-// import { useQuery } from "@tanstack/react-query";
-// import UseAuth from "../../../Hooks/UseAuth";
-// import UseAxios from "../../../Hooks/UseAxios";
-
-
-// const AdminHome = () => {
-//     const { user } = UseAuth();
-//     const axiosSecure = UseAxios();
-
-//     // tanstack query used for advantages to refetch function 
-//     const { data: payments = [], refetch } = useQuery({
-//         queryKey: ['payments'],
-//         queryFn: async () => {
-//             const res = await axiosSecure.get('/payments');
-//             return res.data;
-//         }
-//     });
-//     console.log(payments)
-//     return (
-//         <div>
-//            <h2>
-//             <span>Hi , WelCome owner of the medicine shop  </span>
-//             {
-//               user?.displayName ? user.displayName: 'back'
-//             }
-//             </h2> 
-
-
-//         </div>
-//     );
-// };
-
-// export default AdminHome;
 
 import { useQuery } from "@tanstack/react-query";
 import UseAuth from "../../../Hooks/UseAuth";
 import UseAxios from "../../../Hooks/UseAxios";
+import { Helmet } from "react-helmet-async";
 
 const AdminHome = () => {
     const { user } = UseAuth();
@@ -63,6 +31,9 @@ const AdminHome = () => {
 
     return (
         <div className="p-6">
+              <Helmet>
+                <title>MediMagic | AdminHome</title>
+            </Helmet>
             <h2 className="text-2xl font-bold mb-4">
                 <span>Hi, Welcome owner of the medicine shop </span>
                 {user?.displayName ? user.displayName : 'back'}

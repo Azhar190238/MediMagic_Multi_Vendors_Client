@@ -6,6 +6,7 @@ import UseAxiosPublic from "../../../../Hooks/UseAxiosPublic";
 import UseAxios from "../../../../Hooks/UseAxios";
 import SectionTitle from "../../../Shared/Section/SectionTitle";
 import UseAdvertisementCart from "../../../../Hooks/UseAdvertisementCart";
+import { Helmet } from "react-helmet-async";
 const image_hosting_key = import.meta.env.VITE_imageHosting;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 console.log('Image Hosting Key:', image_hosting_key);
@@ -72,6 +73,9 @@ const Advertisement = () => {
 
     return (
         <div>
+              <Helmet>
+                <title>MediMagic | Advertisement</title>
+            </Helmet>
             <SectionTitle heading='Advertisement' subHeading="What's New Advertise"></SectionTitle>
 
             <div className="overflow-x-auto">

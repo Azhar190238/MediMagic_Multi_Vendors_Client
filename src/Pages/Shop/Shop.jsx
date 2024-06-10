@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import UseAuth from '../../Hooks/UseAuth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import UseAxios from '../../Hooks/UseAxios';
+import { Helmet } from 'react-helmet-async';
 
 const Shop = () => {
     const [carts, refetch] = UseMedicineCart();
@@ -99,6 +100,9 @@ const Shop = () => {
 
     return (
         <div className="my-20 mx-16">
+              <Helmet>
+                <title>MediMagic | Shop</title>
+            </Helmet>
             <SectionTitle subHeading="Please buy here!!" heading="Shop Medicine" />
             
             <div className="mb-4 flex justify-between">

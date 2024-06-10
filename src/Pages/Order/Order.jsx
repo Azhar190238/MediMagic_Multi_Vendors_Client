@@ -7,6 +7,7 @@ import { GoEye } from 'react-icons/go';
 import Swal from 'sweetalert2';
 import UseAuth from '../../Hooks/UseAuth';
 import UseAxios from '../../Hooks/UseAxios';
+import { Helmet } from 'react-helmet-async';
 
 const Order = () => {
     const { category } = useParams();  
@@ -68,7 +69,7 @@ const Order = () => {
 
     const medicineItemDetails = async (id) => {
         try {
-            const response = await fetch(`http://localhost:5000/carts/${id}`);
+            const response = await fetch(`https://assignment-12-server-seven-ecru.vercel.app/carts/${id}`);
             const data = await response.json();
             setSelectedItem(data);
             setIsModalOpen(true);
@@ -84,6 +85,9 @@ const Order = () => {
 
     return (
         <div className="my-20 mx-16">
+              <Helmet>
+                <title>MediMagic | Order</title>
+            </Helmet>
             <SectionTitle subHeading="Please buy here!!" heading="Shop Medicine" />
 
             <div className="overflow-x-auto">

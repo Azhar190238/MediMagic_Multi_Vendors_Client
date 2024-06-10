@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const image_hosting_key = import.meta.env.VITE_imageHosting;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -97,6 +98,9 @@ const AdminCategories = () => {
 
     return (
         <div>
+              <Helmet>
+                <title>MediMagic | Categories</title>
+            </Helmet>
             <SectionTitle heading='Advertisement' subHeading="What's New Advertise" />
 
             <div className="overflow-x-auto">

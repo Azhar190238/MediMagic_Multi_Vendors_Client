@@ -5,6 +5,7 @@ import UseAxios from '../../Hooks/UseAxios';
 import { useQuery } from '@tanstack/react-query';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import { Helmet } from 'react-helmet-async';
 
 const InvoicePage = () => {
     const { user } = UseAuth();
@@ -67,6 +68,9 @@ const InvoicePage = () => {
 
     return (
         <div className="p-4">
+              <Helmet>
+                <title>MediMagic | Invoice Page</title>
+            </Helmet>
             <div className="flex justify-center items-center mb-6">
                 <Link to='/' className="flex items-center">
                     <div className="flex items-center align-center space-x-1 md:space-x-2">

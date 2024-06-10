@@ -2,6 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import UseAxios from "../../../Hooks/UseAxios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const PaymentManagement = () => {
     const axiosSecure = UseAxios();
@@ -32,6 +33,9 @@ const PaymentManagement = () => {
 
     return (
         <div>
+              <Helmet>
+                <title>MediMagic | PaymentManagement</title>
+            </Helmet>
             <h2 className="text-4xl">Total Payments: {payments.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table">

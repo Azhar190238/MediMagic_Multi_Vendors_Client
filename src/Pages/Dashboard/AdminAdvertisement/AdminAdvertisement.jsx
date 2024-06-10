@@ -3,6 +3,7 @@ import { useState } from "react";
 import UseAdvertisementCart from "../../../Hooks/UseAdvertisementCart";
 import Swal from "sweetalert2";
 import UseAxios from "../../../Hooks/UseAxios";
+import { Helmet } from "react-helmet-async";
 
 const AdminAdvertisement = () => {
     const [advertisement, loading, refetch] = UseAdvertisementCart();
@@ -42,6 +43,9 @@ const AdminAdvertisement = () => {
 
     return (
         <div>
+              <Helmet>
+                <title>MediMagic | Admin advertisement</title>
+            </Helmet>
             <div className="overflow-x-auto">
                 <table className="table">
                     <thead>

@@ -117,7 +117,7 @@ import SalesReport from "../Pages/Dashboard/SalesReport/SalesReport";
         {
           path: 'updatedCategory/:id',
           element: <AdminRoutes> <AdminCategoriesUpdated></AdminCategoriesUpdated> </AdminRoutes>,
-          loader: ({params}) => fetch(`http://localhost:5000/categories/${params.id}`)
+          loader: ({params}) => fetch(`https://assignment-12-server-seven-ecru.vercel.app/categories/${params.id}`)
         },
         {
           path: 'adminAdvertise',

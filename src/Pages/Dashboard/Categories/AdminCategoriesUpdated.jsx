@@ -5,6 +5,7 @@ import UseAxios from "../../../Hooks/UseAxios";
 import { useForm } from "react-hook-form";
 import UseAuth from "../../../Hooks/UseAuth";
 import { useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 const image_hosting_key = import.meta.env.VITE_imageHosting;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
@@ -49,6 +50,9 @@ const AdminCategoriesUpdated = () => {
     }
     return (
         <div>
+              <Helmet>
+                <title>MediMagic | Updated Category</title>
+            </Helmet>
             <SectionTitle
                 heading='Updated Here'
                 subHeading="What's up Bro"></SectionTitle>

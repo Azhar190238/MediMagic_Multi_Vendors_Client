@@ -76,7 +76,7 @@ const SignUp = () => {
     return (
         <>
             <Helmet>
-                <title>Bistro Boss | Sign Up</title>
+                <title>BMediMagic | Sign Up</title>
             </Helmet>
             <div>
                 <div className="hero min-h-screen bg-base-200">

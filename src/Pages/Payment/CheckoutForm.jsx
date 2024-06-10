@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import UseAxios from "../../Hooks/UseAxios";
 import UseAuth from "../../Hooks/UseAuth";
 import UseCart from "../../Hooks/UseCart";
+import { Helmet } from "react-helmet-async";
 const CheckoutForm = () => {
   const [error, setError] = useState();
  const [clientSecret, setClientSecret] = useState('');
@@ -105,6 +106,9 @@ const CheckoutForm = () => {
     return (
         
             <form onSubmit={handleSubmit}>
+                <Helmet>
+                <title>MediMagic | Checkout</title>
+            </Helmet>
             <CardElement
         options={{
           style: {

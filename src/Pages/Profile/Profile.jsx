@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import UseAuth from "../../Hooks/UseAuth";
 
 
@@ -7,6 +8,9 @@ const Profile = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200">
+            <Helmet>
+                <title>MediMagic | Profile</title>
+            </Helmet>
         <div className="hero-content flex-col lg:flex-row-reverse">
             <div className=" w-1/2">
             <img src={user?.photoURL} className=" w-96 rounded-lg shadow-2xl" />

@@ -6,6 +6,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import { Helmet } from 'react-helmet-async';
 
 const SalesReport = () => {
     const axiosSecure = UseAxios();
@@ -53,6 +54,9 @@ const SalesReport = () => {
     return (
         <div>
           
+          <Helmet>
+                <title>MediMagic | SalesReport</title>
+            </Helmet>
 
             {/* Date Range Picker */}
             <div className="flex space-x-4 mb-4">

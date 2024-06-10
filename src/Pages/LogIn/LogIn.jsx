@@ -65,7 +65,7 @@ const LogIn = () => {
   return (
     <>
       <Helmet>
-        <title>Bistro Boss | Log In</title>
+        <title>MediMagic | Log In</title>
       </Helmet>
       <div>
         <div className="hero min-h-screen bg-base-200">
