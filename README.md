@@ -26,7 +26,7 @@ Server Site: </br>
 <h1>Cloning Instructions</h1>
 <ol>
 <li>Clone the repository to your local machine.</li>
-<li></li>Install dependencies using npm install.</li>
+<li>Install dependencies using npm install.</li>
 <li>Configure environment variables.</li>
-<li></li>Run the development server using npm start.</li>
+<li>Run the development server using npm start.</li>
 </ol>
