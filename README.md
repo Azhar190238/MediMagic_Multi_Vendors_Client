@@ -21,6 +21,8 @@ Server Site: https://github.com/Azhar190238/MediMagic_Multi_Vendors_Server </br>
   <li> <b>Multiple Vendor Roles:</b> Supports multiple roles such as user, seller, and admin, each with distinct privileges and access levels.</li>
    <li> <b>Payment Method::</b> Offers secure card payment methods, ensuring trust and reliability in transactions.</li>
 </ul>
+<h1>Technologies Used</h1>
+Node.js, JavaScript, CSS, HTML, Firebase, MongoDB, React.js, Express.js, and TailwindCSS. </br>
 
 <h1>Cloning Instructions</h1>
 <ol>
