@@ -1,11 +1,10 @@
-Assignment_ID: assignment12_category_0022 </br>
 My website name is : MediMagic (Multi-Vendor Medicine Selling E-commerce Website) </br>
 Admin Email: admin1938@gmail.com </br>
 admin Password: AZhar123@ </br>
 Seller Email: seller1938@gmail.com </br>
 admin Password: AZhar123@ </br>
 Live link: https://assignment-12-client-one.vercel.app/ </br>
-Server Site: </br>
+Server Site: https://github.com/Azhar190238/MediMagic_Multi_Vendors_Server </br>
 
 <p> This project aims to create a robust Multi-Vendor Medicine Selling E-commerce Website, offering essential features to facilitate seamless online transactions and user management.</p>
 
