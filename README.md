@@ -1,10 +1,10 @@
-Assignment_ID: assignment12_category_0022
-My website name is : MediMagic (Multi-Vendor Medicine Selling E-commerce Website)
-Admin Email: admin1938@gmail.com
-admin Password: AZhar123@
-Seller Email: seller1938@gmail.com
-admin Password: AZhar123@
-Live link: https://assignment-12-client-one.vercel.app/
+Assignment_ID: assignment12_category_0022 </br>
+My website name is : MediMagic (Multi-Vendor Medicine Selling E-commerce Website) </br>
+Admin Email: admin1938@gmail.com </br>
+admin Password: AZhar123@ </br>
+Seller Email: seller1938@gmail.com </br>
+admin Password: AZhar123@ </br>
+Live link: https://assignment-12-client-one.vercel.app/ </br>
 
 
 Here are ten basic features that a Multi-Vendor Medicine Selling E-commerce Website might offer;
