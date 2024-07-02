@@ -1,10 +1,10 @@
-My website name is : MediMagic (Multi-Vendor Medicine Selling E-commerce Website) </br>
-Admin Email: admin1938@gmail.com </br>
-admin Password: AZhar123@ </br>
-Seller Email: seller1938@gmail.com </br>
-admin Password: AZhar123@ </br>
-Live link: https://assignment-12-client-one.vercel.app/ </br>
-Server Site: https://github.com/Azhar190238/MediMagic_Multi_Vendors_Server </br>
+<b>My website name is : </b> MediMagic (Multi-Vendor Medicine Selling E-commerce Website) </br>
+<b>Admin Email: </b> admin1938@gmail.com </br>
+<b>Admin Password: </b> AZhar123@ </br>
+<b>Seller Email:  </b>seller1938@gmail.com </br>
+<b>Seler Password: </b> AZhar123@ </br>
+<b>Live link: </b> https://assignment-12-client-one.vercel.app/ </br>
+<b>Server Site:  </b>https://github.com/Azhar190238/MediMagic_Multi_Vendors_Server </br>
 
 <p> This project aims to create a robust Multi-Vendor Medicine Selling E-commerce Website, offering essential features to facilitate seamless online transactions and user management.</p>
 
