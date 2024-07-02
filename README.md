@@ -5,25 +5,28 @@ admin Password: AZhar123@ </br>
 Seller Email: seller1938@gmail.com </br>
 admin Password: AZhar123@ </br>
 Live link: https://assignment-12-client-one.vercel.app/ </br>
+Server Site: </br>
 
+<p> This project aims to create a robust Multi-Vendor Medicine Selling E-commerce Website, offering essential features to facilitate seamless online transactions and user management.</p>
 
-Here are ten basic features that a Multi-Vendor Medicine Selling E-commerce Website might offer;
- 
- 1) Home Page: This will be the landing page with a brief description of my application. Here showing header ,footer , advertisement banner, discount cart , categories and also meaning ful extra 3 section added here.git
- 2) All shop Page: This page will display all the medicine available in my database.
- 3) Add Medicine Page: This page will allow users to add new Medicine also showing upper site those medicine in specific seller by tabular formate.
- 4) AddCart: A private/protected route where users can see the Cart We've added to the database.
- 5) Update/Delete: Functionality to update or delete a medicine, typically accessible from the database
+<ul>
+     <li> <b>Cart Management (AddCart):</b> Private/protected routes for users to manage their shopping carts.</li>
+ <li>
+ <b>Update/Delete Functionality::</b>  Allows vendors to update or delete medicines, ensuring database accuracy and product management.
+ </li>
+ <li>
+  <b>User Registration and Login:</b> Provides a user-friendly registration form with validation and login functionality, including options for password reset via email.
+ </li>
+ <li> <b>Download Functionality:</b> Implements a feature-rich download system, utilizing React hooks and table formats for efficient user interaction.</li>
+ <li> <b>Search and Sort:</b> Facilitates easy navigation through medicine names and sorting by price, enhancing user experience.</li>
+  <li> <b>Multiple Vendor Roles:</b> Supports multiple roles such as user, seller, and admin, each with distinct privileges and access levels.</li>
+   <li> <b>Payment Method::</b> Offers secure card payment methods, ensuring trust and reliability in transactions.</li>
+</ul>
 
- 6) User Registration:  Simple form for users to input basic details (name, email, password). Ensure entered information meets required criteria (valid email format, strong password).
-
- 7) User Login: Form for users to input registered email and password. Option to remember login credentials for convenience. Link or button for password reset, typically involving email confirmation.
-  
- 8) Download function : here two part download need where i used react hook table formate
-
- 9) Search and short functionality: Here searching from medicine name and shorted to price
-
- 10) Multiple vendors: so here different role include here among them user, seller and admin and also all of could be multiple 
- 11) payment : here adding payment method which is very interesting here used only card payment 
-
-
+<h1>Cloning Instructions</h1>
+<ol>
+<li>Clone the repository to your local machine.</li>
+<li></li>Install dependencies using npm install.</li>
+<li>Configure environment variables.</li>
+<li></li>Run the development server using npm start.</li>
+</ol>
